@@ -20,3 +20,10 @@ argument in the right-hand expression's function call.
 ┃   iex> 2 ~>> div(4)
 ┃   2.0
 ````
+
+
+## The Future
+
+I'd like to take a look at implementing the [Swiss Arrows](https://github.com/rplevy/swiss-arrows) ideas from Robert Levy's Clojure library.
+
+Right now this is just a bit of fooling around.
