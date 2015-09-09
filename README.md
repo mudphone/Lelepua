@@ -31,3 +31,7 @@ Right now this is just a bit of fooling around.
 ## A note about the name
 
 `Lelepua` is the Hawaiian word for **arrow flight**. Or, at least it is according to [the internet](http://scienceviews.com/islands/hawaiianglossary.html).
+
+## License
+
+This code is available under the MIT License. Please see the LICENSE file.
