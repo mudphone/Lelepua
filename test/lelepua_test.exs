@@ -5,7 +5,7 @@ defmodule LelepuaTest do
   def div3(x, y, z \\ 3), do: x / y / z
   
   test "pipe-right" do
-    assert 2 ~>> (&(&1 / &2)).(4) == 2.0
+    assert 2 ~>> div(4) == 2.0
   end
 
   test "pipe-right with default parameters" do

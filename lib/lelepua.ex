@@ -7,9 +7,6 @@ defmodule Lelepua do
     expression's function call.
     
     ## Examples
-        # Assuming `div` is defined like so:
-        # def div(x, y), do: x / y
-        # 
         # Note: The standard pipe operator `|>` would return 0.5
         #       in the example below.
   
