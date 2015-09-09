@@ -27,3 +27,7 @@ argument in the right-hand expression's function call.
 I'd like to take a look at implementing the [Swiss Arrows](https://github.com/rplevy/swiss-arrows) ideas from Robert Levy's Clojure library.
 
 Right now this is just a bit of fooling around.
+
+## A note about the name
+
+`Lelepua` is the Hawaiian word for **arrow flight**. Or, at least it is according to [the internet](http://scienceviews.com/islands/hawaiianglossary.html).
