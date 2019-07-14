@@ -7,30 +7,39 @@ defmodule Lelepua do
     expression's function call.
     
     ## Examples
-        # Note: The standard pipe operator `|>` would return 0.5
-        #       in the example below.
+        # Note: The standard pipe operator `|>` would return 0
+        #       in the first example below.
   
         iex> 2 ~>> div(4)
-        2.0
+        2
+
+        iex> 6 |> div(2) ~>> div(15)
+        5
 
   """
   defmacro left ~>> right do
-    # Assuming: 2 ~>> div(4)
-    [{h, _}|t] = Macro.unpipe({:|>, [], [left, right]})
-    # => [{2, 0}, {{:div, [line: 3], [4]}, 0}]
+    [{h, _}|t] = unpipe({:~>>, [], [left, right]})
     
-    # :lists.foldl is like: reduce(fn, initial_val, list)
-    # consuming list from left to right (lowest to highest index)
-    :lists.foldl fn
-      # first clause matches fn calls
-      {{_, _, args} = x, _pos}, acc ->
-        # pos is one index higher than the last arg
-        pos = Enum.count(args)
+    :lists.foldl fn {x, pos}, acc ->
       Macro.pipe(acc, x, pos)
-
-      # second clause matches terms (like an integer)
-      {x, pos}, acc ->
-        Macro.pipe(acc, x, pos)
     end, h, t
+  end
+  
+  def num_args({_, _, args}), do: Enum.count(args)
+  
+  def unpipe(expr) do
+    :lists.reverse(unpipe(expr, 0, []))
+  end
+
+  defp unpipe({:~>>, _, [left, right]}, n, acc) do
+    unpipe(right, num_args(right), unpipe(left, n, acc))
+  end
+  
+  defp unpipe({:|>, _, [left, right]}, n, acc) do
+    unpipe(right, n, unpipe(left, 0, acc))
+  end
+
+  defp unpipe(other, n, acc) do
+    [{other, n} | acc]
   end
 end
