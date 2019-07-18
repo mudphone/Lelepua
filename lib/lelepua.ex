@@ -35,10 +35,6 @@ defmodule Lelepua do
     unpipe(right, num_args(right), unpipe(left, n, acc))
   end
   
-  defp unpipe({:|>, _, [left, right]}, n, acc) do
-    unpipe(right, n, unpipe(left, 0, acc))
-  end
-
   defp unpipe(other, n, acc) do
     [{other, n} | acc]
   end
